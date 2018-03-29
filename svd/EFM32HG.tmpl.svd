@@ -4,6 +4,7 @@
 #endif
 
 #if defined(EFM32HG350)
+  #define HAVE_AES
   #define SRAM_8
   #ifdef FLASH_64
     #define DEVICE_NAME EFM32HG350F64
@@ -11,11 +12,19 @@
     #define DEVICE_NAME EFM32HG350F32
   #endif
 #elif defined(EFM32HG322)
+  #define HAVE_AES
   #define SRAM_8
   #ifdef FLASH_64
     #define DEVICE_NAME EFM32HG322F64
   #else
     #define DEVICE_NAME EFM32HG322F32
+  #endif
+#elif defined(EFM32HG321)
+  #define SRAM_8
+  #ifdef FLASH_64
+    #define DEVICE_NAME EFM32HG321F64
+  #else
+    #define DEVICE_NAME EFM32HG321F32
   #endif
 #else
   #error "Unsupported device"
@@ -29,6 +38,7 @@
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
   <peripherals>
+#ifdef HAVE_AES
     <peripheral>
       <name>AES</name>
       <version>5.4.0</version>
@@ -314,6 +324,7 @@
         </register>
       </registers>
     </peripheral>
+#endif
     <peripheral>
       <name>DMA</name>
       <version>5.4.0</version>
@@ -1552,11 +1563,13 @@
                   <description>""</description>
                   <value>0x00000030</value>
                 </enumeratedValue>
+#ifdef HAVE_AES
                 <enumeratedValue>
                   <name>AES</name>
                   <description>Advanced Encryption Standard Accelerator</description>
                   <value>0x00000031</value>
                 </enumeratedValue>
+#endif
               </enumeratedValues>
             </field>
           </fields>
@@ -1634,11 +1647,13 @@
                   <description>""</description>
                   <value>0x00000030</value>
                 </enumeratedValue>
+#ifdef HAVE_AES
                 <enumeratedValue>
                   <name>AES</name>
                   <description>Advanced Encryption Standard Accelerator</description>
                   <value>0x00000031</value>
                 </enumeratedValue>
+#endif
               </enumeratedValues>
             </field>
           </fields>
@@ -1716,11 +1731,13 @@
                   <description>""</description>
                   <value>0x00000030</value>
                 </enumeratedValue>
+#ifdef HAVE_AES
                 <enumeratedValue>
                   <name>AES</name>
                   <description>Advanced Encryption Standard Accelerator</description>
                   <value>0x00000031</value>
                 </enumeratedValue>
+#endif
               </enumeratedValues>
             </field>
           </fields>
@@ -1798,11 +1815,13 @@
                   <description>""</description>
                   <value>0x00000030</value>
                 </enumeratedValue>
+#ifdef HAVE_AES
                 <enumeratedValue>
                   <name>AES</name>
                   <description>Advanced Encryption Standard Accelerator</description>
                   <value>0x00000031</value>
                 </enumeratedValue>
+#endif
               </enumeratedValues>
             </field>
           </fields>
@@ -1880,11 +1899,13 @@
                   <description>""</description>
                   <value>0x00000030</value>
                 </enumeratedValue>
+#ifdef HAVE_AES
                 <enumeratedValue>
                   <name>AES</name>
                   <description>Advanced Encryption Standard Accelerator</description>
                   <value>0x00000031</value>
                 </enumeratedValue>
+#endif
               </enumeratedValues>
             </field>
           </fields>
@@ -1962,11 +1983,13 @@
                   <description>""</description>
                   <value>0x00000030</value>
                 </enumeratedValue>
+#ifdef HAVE_AES
                 <enumeratedValue>
                   <name>AES</name>
                   <description>Advanced Encryption Standard Accelerator</description>
                   <value>0x00000031</value>
                 </enumeratedValue>
+#endif
               </enumeratedValues>
             </field>
           </fields>
@@ -8186,8 +8209,13 @@
           <size>32</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+#ifdef HAVE_AES
           <resetMask>0x0000001F</resetMask>
+#else
+          <resetMask>0x0000001E</resetMask>
+#endif
           <fields>
+#ifdef HAVE_AES
             <field>
               <name>AES</name>
               <description>Advanced Encryption Standard Accelerator Clock Enable</description>
@@ -8195,6 +8223,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#endif
             <field>
               <name>DMA</name>
               <description>Direct Memory Access Controller Clock Enable</description>
