@@ -4,6 +4,7 @@
 #endif
 
 #if defined(EFM32HG350)
+  #define HAVE_ADC_IDAC
   #define HAVE_USB
   #define HAVE_AES
   #define SRAM_8
@@ -13,6 +14,7 @@
     #define DEVICE_NAME EFM32HG350F32
   #endif
 #elif defined(EFM32HG322)
+  #define HAVE_ADC_IDAC
   #define HAVE_USB
   #define HAVE_AES
   #define SRAM_8
@@ -22,6 +24,7 @@
     #define DEVICE_NAME EFM32HG322F32
   #endif
 #elif defined(EFM32HG321)
+  #define HAVE_ADC_IDAC
   #define HAVE_USB
   #define SRAM_8
   #ifdef FLASH_64
@@ -30,6 +33,7 @@
     #define DEVICE_NAME EFM32HG321F32
   #endif
 #elif defined(EFM32HG310)
+  #define HAVE_ADC_IDAC
   #define HAVE_USB
   #define HAVE_AES
   #define SRAM_8
@@ -39,6 +43,7 @@
     #define DEVICE_NAME EFM32HG310F32
   #endif
 #elif defined(EFM32HG309)
+  #define HAVE_ADC_IDAC
   #define HAVE_USB
   #define HAVE_AES
   #define SRAM_8
@@ -47,7 +52,16 @@
   #else
     #define DEVICE_NAME EFM32HG309F32
   #endif
+#elif defined(EFM32HG308)
+  #define HAVE_USB
+  #define SRAM_8
+  #ifdef FLASH_64
+    #define DEVICE_NAME EFM32HG308F64
+  #else
+    #define DEVICE_NAME EFM32HG308F32
+  #endif
 #elif defined(EFM32HG222)
+  #define HAVE_ADC_IDAC
   #define HAVE_AES
   #ifdef FLASH_64
     #define SRAM_8
@@ -55,6 +69,34 @@
   #else
     #define SRAM_4
     #define DEVICE_NAME EFM32HG222F32
+  #endif
+#elif defined(EFM32HG210)
+  #define HAVE_ADC_IDAC
+  #define HAVE_AES
+  #ifdef FLASH_64
+    #define SRAM_8
+    #define DEVICE_NAME EFM32HG210F64
+  #else
+    #define SRAM_4
+    #define DEVICE_NAME EFM32HG210F32
+  #endif
+#elif defined(EFM32HG110)
+  #define HAVE_ADC_IDAC
+  #define HAVE_AES
+  #ifdef FLASH_64
+    #define SRAM_8
+    #define DEVICE_NAME EFM32HG110F64
+  #else
+    #define SRAM_4
+    #define DEVICE_NAME EFM32HG110F32
+  #endif
+#elif defined(EFM32HG108)
+  #ifdef FLASH_64
+    #define SRAM_8
+    #define DEVICE_NAME EFM32HG108F64
+  #else
+    #define SRAM_4
+    #define DEVICE_NAME EFM32HG108F32
   #endif
 #else
   #error "Unsupported device"
@@ -1548,11 +1590,13 @@
                   <description>No source selected</description>
                   <value>0x00000000</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -1632,11 +1676,13 @@
                   <description>No source selected</description>
                   <value>0x00000000</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -1716,11 +1762,13 @@
                   <description>No source selected</description>
                   <value>0x00000000</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -1800,11 +1848,13 @@
                   <description>No source selected</description>
                   <value>0x00000000</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -1884,11 +1934,13 @@
                   <description>No source selected</description>
                   <value>0x00000000</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -1968,11 +2020,13 @@
                   <description>No source selected</description>
                   <value>0x00000000</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -8284,7 +8338,7 @@
 #elif defined(HAVE_AES)
           <resetMask>0x00000007</resetMask>
 #else
-#error TODO
+          <resetMask>0x00000006</resetMask>
 #endif
           <fields>
 #ifdef HAVE_AES
@@ -8335,7 +8389,11 @@
           <size>32</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+#ifdef HAVE_ADC_IDAC
           <resetMask>0x00000FFF</resetMask>
+#else
+          <resetMask>0x00000B7F</resetMask>
+#endif
           <fields>
             <field>
               <name>TIMER0</name>
@@ -8386,6 +8444,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#ifdef HAVE_ADC_IDAC
             <field>
               <name>IDAC0</name>
               <description>Current Digital to Analog Converter 0 Clock Enable</description>
@@ -8393,6 +8452,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#endif
             <field>
               <name>GPIO</name>
               <description>General purpose Input/Output Clock Enable</description>
@@ -8407,6 +8467,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#ifdef HAVE_ADC_IDAC
             <field>
               <name>ADC0</name>
               <description>Analog to Digital Converter 0 Clock Enable</description>
@@ -8414,6 +8475,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#endif
             <field>
               <name>I2C0</name>
               <description>I2C 0 Clock Enable</description>
@@ -20054,11 +20116,13 @@
                   <description>Analog Comparator 0</description>
                   <value>0x00000002</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -20189,11 +20253,13 @@
                   <description>Analog Comparator 0</description>
                   <value>0x00000002</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -20324,11 +20390,13 @@
                   <description>Analog Comparator 0</description>
                   <value>0x00000002</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -20459,11 +20527,13 @@
                   <description>Analog Comparator 0</description>
                   <value>0x00000002</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -20594,11 +20664,13 @@
                   <description>Analog Comparator 0</description>
                   <value>0x00000002</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -20729,11 +20801,13 @@
                   <description>Analog Comparator 0</description>
                   <value>0x00000002</value>
                 </enumeratedValue>
+#ifdef HAVE_ADC_IDAC
                 <enumeratedValue>
                   <name>ADC0</name>
                   <description>Analog to Digital Converter 0</description>
                   <value>0x00000008</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>USART0</name>
                   <description>Universal Synchronous/Asynchronous Receiver/Transmitter 0</description>
@@ -20931,6 +21005,7 @@
         </register>
       </registers>
     </peripheral>
+#ifdef HAVE_ADC_IDAC
     <peripheral>
       <name>IDAC0</name>
       <version>5.4.0</version>
@@ -21126,6 +21201,7 @@
         </register>
       </registers>
     </peripheral>
+#endif
     <peripheral>
       <name>GPIO</name>
       <version>5.4.0</version>
@@ -32007,6 +32083,7 @@
         </register>
       </registers>
     </peripheral>
+#ifdef HAVE_ADC_IDAC
     <peripheral>
       <name>ADC0</name>
       <version>5.4.0</version>
@@ -33065,6 +33142,7 @@
         </register>
       </registers>
     </peripheral>
+#endif
     <peripheral>
       <name>LEUART0</name>
       <version>5.4.0</version>
