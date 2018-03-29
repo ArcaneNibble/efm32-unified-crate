@@ -109,6 +109,16 @@
   <description>Silicon Labs DEVICE_NAME Cortex-M MCU</description>
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
+  <cpu>
+    <name>CM0+</name>
+    <revision>r0p1</revision>
+    <endian>little</endian>
+    <fpuPresent>false</fpuPresent>
+    <mpuPresent>false</mpuPresent>
+    <vtorPresent>true</vtorPresent>
+    <nvicPrioBits>2</nvicPrioBits>
+    <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>
   <peripherals>
 #ifdef HAVE_AES
     <peripheral>
