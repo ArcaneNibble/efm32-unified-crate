@@ -4,6 +4,7 @@
 #endif
 
 #if defined(EFM32HG350)
+  #define HAVE_USB
   #define HAVE_AES
   #define SRAM_8
   #ifdef FLASH_64
@@ -12,6 +13,7 @@
     #define DEVICE_NAME EFM32HG350F32
   #endif
 #elif defined(EFM32HG322)
+  #define HAVE_USB
   #define HAVE_AES
   #define SRAM_8
   #ifdef FLASH_64
@@ -20,11 +22,39 @@
     #define DEVICE_NAME EFM32HG322F32
   #endif
 #elif defined(EFM32HG321)
+  #define HAVE_USB
   #define SRAM_8
   #ifdef FLASH_64
     #define DEVICE_NAME EFM32HG321F64
   #else
     #define DEVICE_NAME EFM32HG321F32
+  #endif
+#elif defined(EFM32HG310)
+  #define HAVE_USB
+  #define HAVE_AES
+  #define SRAM_8
+  #ifdef FLASH_64
+    #define DEVICE_NAME EFM32HG310F64
+  #else
+    #define DEVICE_NAME EFM32HG310F32
+  #endif
+#elif defined(EFM32HG309)
+  #define HAVE_USB
+  #define HAVE_AES
+  #define SRAM_8
+  #ifdef FLASH_64
+    #define DEVICE_NAME EFM32HG309F64
+  #else
+    #define DEVICE_NAME EFM32HG309F32
+  #endif
+#elif defined(EFM32HG222)
+  #define HAVE_AES
+  #ifdef FLASH_64
+    #define SRAM_8
+    #define DEVICE_NAME EFM32HG222F64
+  #else
+    #define SRAM_4
+    #define DEVICE_NAME EFM32HG222F32
   #endif
 #else
   #error "Unsupported device"
@@ -1996,6 +2026,7 @@
         </register>
       </registers>
     </peripheral>
+#ifdef HAVE_USB
     <peripheral>
       <name>USB</name>
       <version>5.4.0</version>
@@ -5917,6 +5948,7 @@
         </register>
       </registers>
     </peripheral>
+#endif
     <peripheral>
       <name>MSC</name>
       <version>5.4.0</version>
@@ -7551,7 +7583,11 @@
           <size>32</size>
           <access>write-only</access>
           <resetValue>0x00000000</resetValue>
+#ifdef HAVE_USB
           <resetMask>0x000000FF</resetMask>
+#else
+          <resetMask>0x0000001F</resetMask>
+#endif
           <fields>
             <field>
               <name>HFCLKSEL</name>
@@ -7601,6 +7637,7 @@
               <bitWidth>1</bitWidth>
               <access>write-only</access>
             </field>
+#ifdef HAVE_USB
             <field>
               <name>USBCCLKSEL</name>
               <description>USB Core Clock Select</description>
@@ -7625,6 +7662,7 @@
                 </enumeratedValue>
               </enumeratedValues>
             </field>
+#endif
           </fields>
         </register>
         <register>
@@ -7741,7 +7779,11 @@
           <size>32</size>
           <access>read-only</access>
           <resetValue>0x00000403</resetValue>
+#ifdef HAVE_USB
           <resetMask>0x04F77FFF</resetMask>
+#else
+          <resetMask>0x04E07FFF</resetMask>
+#endif
           <fields>
             <field>
               <name>HFRCOENS</name>
@@ -7848,6 +7890,7 @@
               <bitWidth>1</bitWidth>
               <access>read-only</access>
             </field>
+#ifdef HAVE_USB
             <field>
               <name>USBCLFXOSEL</name>
               <description>USBC LFXO Selected</description>
@@ -7876,6 +7919,7 @@
               <bitWidth>1</bitWidth>
               <access>read-only</access>
             </field>
+#endif
             <field>
               <name>USHFRCOENS</name>
               <description>USHFRCO Enable Status</description>
@@ -7913,7 +7957,11 @@
           <size>32</size>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
+#ifdef HAVE_USB
           <resetMask>0x0000037F</resetMask>
+#else
+          <resetMask>0x0000017F</resetMask>
+#endif
           <fields>
             <field>
               <name>HFRCORDY</name>
@@ -7971,6 +8019,7 @@
               <bitWidth>1</bitWidth>
               <access>read-only</access>
             </field>
+#ifdef HAVE_USB
             <field>
               <name>USBCHFOSCSEL</name>
               <description>USBC HF-oscillator Selected Interrupt Flag</description>
@@ -7978,6 +8027,7 @@
               <bitWidth>1</bitWidth>
               <access>read-only</access>
             </field>
+#endif
           </fields>
         </register>
         <register>
@@ -7987,7 +8037,11 @@
           <size>32</size>
           <access>write-only</access>
           <resetValue>0x00000000</resetValue>
+#ifdef HAVE_USB
           <resetMask>0x0000037F</resetMask>
+#else
+          <resetMask>0x0000017F</resetMask>
+#endif
           <fields>
             <field>
               <name>HFRCORDY</name>
@@ -8045,6 +8099,7 @@
               <bitWidth>1</bitWidth>
               <access>write-only</access>
             </field>
+#ifdef HAVE_USB
             <field>
               <name>USBCHFOSCSEL</name>
               <description>USBC HF-oscillator Selected Interrupt Flag Set</description>
@@ -8052,6 +8107,7 @@
               <bitWidth>1</bitWidth>
               <access>write-only</access>
             </field>
+#endif
           </fields>
         </register>
         <register>
@@ -8061,7 +8117,11 @@
           <size>32</size>
           <access>write-only</access>
           <resetValue>0x00000000</resetValue>
+#ifdef HAVE_USB
           <resetMask>0x0000037F</resetMask>
+#else
+          <resetMask>0x0000017F</resetMask>
+#endif
           <fields>
             <field>
               <name>HFRCORDY</name>
@@ -8119,6 +8179,7 @@
               <bitWidth>1</bitWidth>
               <access>write-only</access>
             </field>
+#ifdef HAVE_USB
             <field>
               <name>USBCHFOSCSEL</name>
               <description>USBC HF-oscillator Selected Interrupt Flag Clear</description>
@@ -8126,6 +8187,7 @@
               <bitWidth>1</bitWidth>
               <access>write-only</access>
             </field>
+#endif
           </fields>
         </register>
         <register>
@@ -8135,7 +8197,11 @@
           <size>32</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+#ifdef HAVE_USB
           <resetMask>0x0000037F</resetMask>
+#else
+          <resetMask>0x0000017F</resetMask>
+#endif
           <fields>
             <field>
               <name>HFRCORDY</name>
@@ -8193,6 +8259,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#ifdef HAVE_USB
             <field>
               <name>USBCHFOSCSEL</name>
               <description>USBC HF-oscillator Selected Interrupt Flag Clear</description>
@@ -8200,6 +8267,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#endif
           </fields>
         </register>
         <register>
@@ -8209,10 +8277,14 @@
           <size>32</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-#ifdef HAVE_AES
+#if defined(HAVE_AES) && defined(HAVE_USB)
           <resetMask>0x0000001F</resetMask>
-#else
+#elif defined(HAVE_USB)
           <resetMask>0x0000001E</resetMask>
+#elif defined(HAVE_AES)
+          <resetMask>0x00000007</resetMask>
+#else
+#error TODO
 #endif
           <fields>
 #ifdef HAVE_AES
@@ -8238,6 +8310,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#ifdef HAVE_USB
             <field>
               <name>USBC</name>
               <description>Universal Serial Bus Interface Core Clock Enable</description>
@@ -8252,6 +8325,7 @@
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
+#endif
           </fields>
         </register>
         <register>
@@ -20010,11 +20084,13 @@
                   <description>Timer 2</description>
                   <value>0x0000001E</value>
                 </enumeratedValue>
+#ifdef HAVE_USB
                 <enumeratedValue>
                   <name>USB</name>
                   <description>Universal Serial Bus Interface</description>
                   <value>0x00000024</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>RTC</name>
                   <description>Real-Time Counter</description>
@@ -20143,11 +20219,13 @@
                   <description>Timer 2</description>
                   <value>0x0000001E</value>
                 </enumeratedValue>
+#ifdef HAVE_USB
                 <enumeratedValue>
                   <name>USB</name>
                   <description>Universal Serial Bus Interface</description>
                   <value>0x00000024</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>RTC</name>
                   <description>Real-Time Counter</description>
@@ -20276,11 +20354,13 @@
                   <description>Timer 2</description>
                   <value>0x0000001E</value>
                 </enumeratedValue>
+#ifdef HAVE_USB
                 <enumeratedValue>
                   <name>USB</name>
                   <description>Universal Serial Bus Interface</description>
                   <value>0x00000024</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>RTC</name>
                   <description>Real-Time Counter</description>
@@ -20409,11 +20489,13 @@
                   <description>Timer 2</description>
                   <value>0x0000001E</value>
                 </enumeratedValue>
+#ifdef HAVE_USB
                 <enumeratedValue>
                   <name>USB</name>
                   <description>Universal Serial Bus Interface</description>
                   <value>0x00000024</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>RTC</name>
                   <description>Real-Time Counter</description>
@@ -20542,11 +20624,13 @@
                   <description>Timer 2</description>
                   <value>0x0000001E</value>
                 </enumeratedValue>
+#ifdef HAVE_USB
                 <enumeratedValue>
                   <name>USB</name>
                   <description>Universal Serial Bus Interface</description>
                   <value>0x00000024</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>RTC</name>
                   <description>Real-Time Counter</description>
@@ -20675,11 +20759,13 @@
                   <description>Timer 2</description>
                   <value>0x0000001E</value>
                 </enumeratedValue>
+#ifdef HAVE_USB
                 <enumeratedValue>
                   <name>USB</name>
                   <description>Universal Serial Bus Interface</description>
                   <value>0x00000024</value>
                 </enumeratedValue>
+#endif
                 <enumeratedValue>
                   <name>RTC</name>
                   <description>Real-Time Counter</description>
