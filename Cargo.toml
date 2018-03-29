@@ -1,0 +1,15 @@
+[package]
+name = "efm32"
+version = "0.0.1"
+authors = ["Robert Ou <rqou@robertou.com>"]
+description = "Unified device support crate for all EFM32 microcontrollers (WIP)"
+categories = ["embedded", "hardware-support"]
+keywords = ["arm", "cortex-m", "efm32", "svd2rust"]
+readme = "README.md"
+license-file = "LICENSE"
+build = "build.rs"
+documentation = "https://docs.rs/efm32"
+repository = "https://github.com/rqou/efm32-unified-crate"
+
+[dependencies]
+tempdir = "0.3"
