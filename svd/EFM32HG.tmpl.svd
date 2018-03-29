@@ -10,6 +10,13 @@
   #else
     #define DEVICE_NAME EFM32HG350F32
   #endif
+#elif defined(EFM32HG322)
+  #define SRAM_8
+  #ifdef FLASH_64
+    #define DEVICE_NAME EFM32HG322F64
+  #else
+    #define DEVICE_NAME EFM32HG322F32
+  #endif
 #else
   #error "Unsupported device"
 #endif
